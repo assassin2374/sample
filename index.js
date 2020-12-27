@@ -1,13 +1,45 @@
-const pTag=document.getElementById('test')
 const textBox=document.getElementById('text-box')
-const deleteBottn=document.getElementById('delete-botton')
+const addButton=document.getElementById('add-button')
+const todoArea=document.getElementById('todo-area')
 
-console.log(pTag);
+let count=0;
 
-deleteBottn.onclick =()=> {
-  console.log(textBox);
+const user={
+  id:'',
+  name:'',
+  email:'',
+};
+
+const users=[
+  {
+    id:'1',
+    name:'matsumoto',
+    email:'softbank.jp',
+  },
+  {
+    id:'2',
+    name:'matsumoto',
+    email:'softbank.jp',
+  },
+  {
+    id:'3',
+    name:'matsumoto',
+    email:'softbank.jp',
+  }
+];
+
+addButton.onclick=()=>{
+  const id = count;
+  console.log(textBox.value);
+  const todoElement = `<p>${textBox.value}<button id="detete-${id}">delete</button></p>`;
+  todoArea.insertAdjacentHTML('afterbegin', todoElement);
+
+  const deleteButton=document.getElementById(`detete-${id}`);
+  const parent=deleteButton.parentNode;
+  deleteButton.onclick=()=>{
+    console.log(parent);
+    parent.remove();
+  }
+
+  count++;
 }
-
-// const array=['0', '1', '2', '3'];
-
-// array.forEach[(nomber)=>{console.log(nomber)}]
